@@ -1,0 +1,39 @@
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/asier/workspace/42/inception/data/wordpress
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /Users/asier/workspace/42/inception/data/mariadb
+
+networks:
+  inception:
+    name: inception
+
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx/
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception
+    restart: always
+
+  wordpress:
+    build: ./requirements/wordpress/
+    image: wordpress
+  mariadb:
+    build: ./requirements/mariadb/
+    image: mariadb
+

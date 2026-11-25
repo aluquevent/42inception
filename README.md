@@ -103,7 +103,7 @@ Makefile is a thin wrapper around Compose that also creates the host data folder
 ### Main design choices
 
 1. **Base image**: `alpine:3.23` for all services.
-    - **What:** a pinned version, never `latest`.
+    - **What:** a fixed version, never `latest`.
     - **Why:** the subject forbids `latest` and requires the penultimate stable version
       of Alpine or Debian. Alpine weighs ~8 MB, builds fast and ships fewer packages,
       which also means a smaller attack surface.
@@ -278,7 +278,7 @@ AI (Claude) was used as a learning and review assistant, not to generate the pro
   with links to the official documentation for each step.
 - **Review / debugging:** reviewing the Compose file and entrypoint scripts, and
   helping interpret error logs during testing.
-- **Documentation:** drafting the structure and first version of `README.md`,
+- **Documentation:** drafting the structure and visual formatting of `README.md`,
   `USER_DOC.md` and `DEV_DOC.md`, which I then reviewed and rewrote.
 
 All Dockerfiles, configuration files and scripts were written and tested by me,

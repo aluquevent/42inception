@@ -1,6 +1,3 @@
 .env
 secrets/
-book/
-docs/
-book.toml
 en.subject.pdf

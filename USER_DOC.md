@@ -36,7 +36,7 @@ Other commands, use them with care:
 |---|---|---|
 | `make down` | Stops the containers | **Kept** |
 | `make clean` | Stops the containers, deletes the images and the Docker volumes | **Kept** (files stay in `/home/<login>/data`) |
-| `make fclean` | `clean` + deletes `/home/<login>/data` (asks for your `sudo` password) | **Deleted**: posts, users and settings are lost |
+| `make fclean` | `clean` + deletes `/home/<login>/data` | **Deleted**: posts, users and settings are lost |
 | `make re` | `fclean` + `make`: fresh install from zero | **Deleted**, then a new empty site is created |
 
 ## 3. Access the website and the administration panel
@@ -82,18 +82,6 @@ To read one:
 cat secrets/wp_admin_password.txt
 ```
 
-### Changing a password
-
-The passwords are only read **the first time** the stack is installed. After that
-they are stored inside the database, so editing the file alone changes nothing.
-Two options:
-
-- **Keep the site:** change the password from the admin panel
-  (*Users* → *Profile* → *Set New Password*). Then also update the file in
-  `secrets/` so it stays the reference.
-- **Start over:** edit the file, then run `make fclean && make`.
-  ⚠ This deletes all the website content.
-
 ## 5. Check that services are running
 
 ```sh
@@ -102,8 +90,7 @@ docker logs <container>                        # show the logs: mariadb, wordpre
 ```
 
 In the `ps` output, all three containers (`mariadb`, `wordpress`, `nginx`) should be
-`Up`, and `mariadb` should show `(healthy)`. If a container keeps restarting, its
-logs usually say why.
+`Up`, and `mariadb` should show `(healthy)`. If a container keeps restarting, read the logs.
 
 Quick checks:
 

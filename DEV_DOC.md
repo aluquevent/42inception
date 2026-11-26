@@ -7,10 +7,9 @@ manage the containers and volumes, and where the data lives.
 
 ### Prerequisites
 
-- **VM / OS:** a Linux virtual machine (Debian 13 "Trixie" recommended) with a
-  browser. Ideally the VM user is your 42 login, so `/home/<login>` is your home.
-- **Docker Engine + Compose plugin:** install from the official apt repository
-  ([guide](https://docs.docker.com/engine/install/debian/)):
+- **VM / OS:** a Linux virtual machine with a
+  browser or port-fowarding enabled. Ideally the VM user is your 42 login, so `/home/<login>` is your home.
+- **Docker + Compose plugin:** install the necessary packages (docker docker-cli docker-cli-compose for Alpine)
 
   ```sh
   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
@@ -55,10 +54,10 @@ know where to create the data folders.
 | `MYSQL_DATABASE` | Name of the database created for WordPress | `wordpress` |
 | `MYSQL_USER` | MariaDB user WordPress connects with (has all privileges on `MYSQL_DATABASE` only) | `wp_user` |
 | `WP_TITLE` | Title of the WordPress site | `Inception` |
-| `WP_ADMIN_USER` | WordPress administrator username. Can't contain "admin" (the entrypoint refuses to start otherwise) | `boss42` |
-| `WP_ADMIN_EMAIL` | Administrator email | `boss42@example.com` |
-| `WP_USER` | Second WordPress user, created with the `author` role | `writer` |
-| `WP_USER_EMAIL` | Email of the second user | `writer@example.com` |
+| `WP_ADMIN_USER` | WordPress administrator username. Can't contain "admin" (the entrypoint refuses to start otherwise) | `aluque-v_master` |
+| `WP_ADMIN_EMAIL` | Administrator email | `aluque-v_master@example.com` |
+| `WP_USER` | Second WordPress user, created with the `author` role | `aluque-v_peer` |
+| `WP_USER_EMAIL` | Email of the second user | `aluque-v_peer@example.com` |
 
 Create it:
 
@@ -72,10 +71,10 @@ MYSQL_USER=wp_user
 
 WP_TITLE=Inception
 
-WP_ADMIN_USER=boss42
-WP_ADMIN_EMAIL=boss42@example.com
-WP_USER=writer
-WP_USER_EMAIL=writer@example.com
+WP_ADMIN_USER=aluque-v_master
+WP_ADMIN_EMAIL=aluque-v_master@example.com
+WP_USER=aluque-v_peer
+WP_USER_EMAIL=aluque-v_peer@example.com
 EOF
 ```
 
